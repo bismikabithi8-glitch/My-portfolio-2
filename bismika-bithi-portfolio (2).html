@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bismika Bithi — Google Ads Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-50: #f0faf0;
+    --green-100: #d4f0d4;
+    --green-200: #a3dba3;
+    --green-400: #5ab85a;
+    --green-600: #2e7d2e;
+    --green-800: #1a4d1a;
+    --green-900: #0d280d;
+    --cream: #fafaf7;
+    --charcoal: #1a1a18;
+    --mid: #5a5a56;
+    --border: rgba(46,125,46,0.15);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 64px;
+    background: rgba(250,250,247,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--green-800);
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    font-size: 14px; font-weight: 500;
+    color: var(--mid); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green-600); }
+  .nav-cta {
+    background: var(--green-600); color: #fff !important;
+    padding: 9px 22px; border-radius: 100px;
+    font-size: 14px; font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--green-800) !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: var(--charcoal); border-radius: 2px; transition: 0.3s; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 100px 5% 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -120px; right: -120px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, var(--green-100) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+  }
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: center;
+    position: relative; z-index: 1;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--green-50); border: 1px solid var(--green-200);
+    color: var(--green-600); font-size: 12px; font-weight: 600;
+    padding: 6px 16px; border-radius: 100px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 20px;
+  }
+  .hero-badge .dot { width: 7px; height: 7px; background: var(--green-400); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+  }
+  .hero h1 em { color: var(--green-600); font-style: italic; }
+  .hero-desc {
+    font-size: 17px; color: var(--mid);
+    line-height: 1.7; margin-bottom: 36px;
+  }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--green-600); color: #fff;
+    padding: 13px 28px; border-radius: 100px;
+    font-size: 15px; font-weight: 500;
+    text-decoration: none; transition: all 0.2s;
+    border: 2px solid transparent;
+  }
+  .btn-primary:hover { background: var(--green-800); transform: translateY(-1px); }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: var(--green-600);
+    padding: 13px 28px; border-radius: 100px;
+    font-size: 15px; font-weight: 500;
+    text-decoration: none; transition: all 0.2s;
+    border: 2px solid var(--green-200);
+  }
+  .btn-ghost:hover { border-color: var(--green-400); background: var(--green-50); }
+  .hero-stats {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 16px; margin-top: 44px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+  }
+  .hero-stat {}
+  .hero-stat .num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px; color: var(--green-600);
+    line-height: 1;
+  }
+  .hero-stat .lbl { font-size: 13px; color: var(--mid); margin-top: 4px; }
+
+  /* HERO VISUAL */
+  .hero-visual {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .comparison-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 4px 32px rgba(46,125,46,0.07);
+  }
+  .comparison-card h3 {
+    font-size: 13px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 16px;
+  }
+  .comparison-card.bad h3 { color: #c0392b; }
+  .comparison-card.good h3 { color: var(--green-600); }
+  .comp-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .comp-list li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 14px; color: var(--charcoal);
+  }
+  .comp-list li .icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .comp-list.bad li .icon { color: #e74c3c; }
+  .comp-list.good li .icon { color: var(--green-400); }
+
+  /* SECTIONS COMMON */
+  section { padding: 90px 5%; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    display: inline-block;
+    font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--green-600);
+    background: var(--green-50);
+    border: 1px solid var(--green-200);
+    padding: 5px 14px; border-radius: 100px;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    letter-spacing: -0.02em; line-height: 1.15;
+    color: var(--charcoal); margin-bottom: 14px;
+  }
+  .section-sub { font-size: 17px; color: var(--mid); max-width: 560px; line-height: 1.7; }
+  .section-head { margin-bottom: 52px; }
+
+  /* ABOUT */
+  .about-bg { background: #fff; }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1.3fr;
+    gap: 64px; align-items: start;
+  }
+  .about-left {}
+  .about-avatar-wrap {
+    width: 88px; height: 88px; border-radius: 50%;
+    background: var(--green-100);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 30px; color: var(--green-800);
+    margin-bottom: 20px;
+    border: 3px solid var(--green-200);
+  }
+  .about-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px; color: var(--charcoal); margin-bottom: 4px;
+  }
+  .about-role { font-size: 15px; color: var(--green-600); font-weight: 500; margin-bottom: 20px; }
+  .about-bio { font-size: 15px; color: var(--mid); line-height: 1.75; margin-bottom: 24px; }
+  .social-links { display: flex; gap: 12px; }
+  .social-link {
+    display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 50%;
+    border: 1px solid var(--border);
+    color: var(--mid); text-decoration: none; font-size: 18px;
+    transition: all 0.2s;
+  }
+  .social-link:hover { border-color: var(--green-400); color: var(--green-600); background: var(--green-50); }
+  .about-right {}
+  .cert-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
+  .cert-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 18px;
+    background: var(--cream); border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .cert-icon { font-size: 22px; }
+  .cert-name { font-size: 14px; font-weight: 500; color: var(--charcoal); }
+  .cert-from { font-size: 12px; color: var(--mid); }
+  .skills-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-pill {
+    padding: 6px 16px;
+    background: var(--green-50);
+    border: 1px solid var(--green-200);
+    border-radius: 100px;
+    font-size: 13px; color: var(--green-800); font-weight: 500;
+  }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .service-card {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 20px; padding: 32px;
+    transition: all 0.3s;
+  }
+  .service-card:hover { border-color: var(--green-400); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(46,125,46,0.12); }
+  .service-icon {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: var(--green-50); border: 1px solid var(--green-200);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; margin-bottom: 20px;
+  }
+  .service-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px; color: var(--charcoal); margin-bottom: 10px;
+  }
+  .service-desc { font-size: 14px; color: var(--mid); line-height: 1.7; margin-bottom: 20px; }
+  .service-features { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .service-features li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--charcoal); }
+  .service-features li::before { content: '✓'; color: var(--green-400); font-weight: 700; flex-shrink: 0; }
+
+  /* WHY ME */
+  .why-bg { background: var(--green-800); }
+  .why-bg .section-label { color: var(--green-200); background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); }
+  .why-bg .section-title { color: #fff; }
+  .why-bg .section-sub { color: var(--green-200); }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+  .why-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px; padding: 28px;
+    transition: background 0.2s;
+  }
+  .why-card:hover { background: rgba(255,255,255,0.1); }
+  .why-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 40px; color: var(--green-400);
+    line-height: 1; margin-bottom: 12px;
+  }
+  .why-title { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+  .why-desc { font-size: 13px; color: var(--green-200); line-height: 1.6; }
+
+  /* REVIEWS */
+  .reviews-bg { background: var(--cream); }
+  .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 20px; }
+  .review-card {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 18px; padding: 26px;
+    position: relative;
+    transition: box-shadow 0.2s;
+  }
+  .review-card:hover { box-shadow: 0 8px 32px rgba(46,125,46,0.1); }
+  .review-stars { display: flex; gap: 3px; margin-bottom: 14px; }
+  .review-stars span { color: #f59e0b; font-size: 16px; }
+  .review-text { font-size: 14px; color: var(--mid); line-height: 1.7; margin-bottom: 18px; font-style: italic; }
+  .review-author { display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--border); padding-top: 16px; }
+  .review-av {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--green-100);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 600; font-size: 14px; color: var(--green-800);
+    flex-shrink: 0;
+  }
+  .review-name { font-size: 14px; font-weight: 600; color: var(--charcoal); }
+  .review-role { font-size: 12px; color: var(--mid); }
+  .platform-badge {
+    position: absolute; top: 18px; right: 18px;
+    font-size: 11px; font-weight: 600;
+    color: var(--green-600);
+    background: var(--green-50);
+    border: 1px solid var(--green-200);
+    padding: 3px 10px; border-radius: 100px;
+  }
+
+  /* CONTACT */
+  .contact-bg { background: #fff; }
+  .contact-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 64px; align-items: start;
+  }
+  .contact-left {}
+  .contact-left p { font-size: 15px; color: var(--mid); line-height: 1.7; margin-bottom: 32px; }
+  .contact-methods { display: flex; flex-direction: column; gap: 16px; }
+  .contact-method {
+    display: flex; align-items: center; gap: 16px;
+    padding: 16px 20px;
+    background: var(--cream); border: 1px solid var(--border);
+    border-radius: 14px; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .contact-method:hover { border-color: var(--green-400); background: var(--green-50); }
+  .cm-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: var(--green-50); border: 1px solid var(--green-200);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+  }
+  .cm-label { font-size: 12px; color: var(--mid); }
+  .cm-val { font-size: 14px; font-weight: 600; color: var(--charcoal); }
+  .contact-right {}
+  .contact-form-card {
+    background: var(--green-800); border-radius: 24px;
+    padding: 36px; color: #fff;
+  }
+  .contact-form-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px; margin-bottom: 8px;
+  }
+  .contact-form-card p { font-size: 14px; color: var(--green-200); margin-bottom: 28px; }
+  .form-row { display: flex; flex-direction: column; gap: 14px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 12px; font-weight: 600; color: var(--green-200); text-transform: uppercase; letter-spacing: 0.06em; }
+  .form-group input, .form-group textarea, .form-group select {
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 10px;
+    color: #fff; font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.35); }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--green-400); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-group select option { background: var(--green-800); color: #fff; }
+  .form-submit {
+    width: 100%; padding: 14px;
+    background: var(--green-400); color: var(--green-900);
+    border: none; border-radius: 100px;
+    font-size: 15px; font-weight: 700;
+    cursor: pointer; font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s; margin-top: 6px;
+  }
+  .form-submit:hover { background: #fff; }
+
+  /* FOOTER */
+  footer {
+    background: var(--green-900); color: var(--green-200);
+    text-align: center; padding: 32px 5%;
+    font-size: 13px;
+  }
+  footer a { color: var(--green-400); text-decoration: none; }
+  footer a:hover { color: #fff; }
+
+  /* ALERT */
+  .form-alert {
+    display: none; padding: 12px 16px;
+    background: rgba(90,184,90,0.15);
+    border: 1px solid var(--green-400);
+    border-radius: 10px;
+    color: var(--green-200); font-size: 14px;
+    margin-top: 12px;
+  }
+
+  /* DIVIDER */
+  .divider { border: none; border-top: 1px solid var(--border); }
+
+  /* MOBILE NAV */
+  .mobile-menu {
+    display: none;
+    flex-direction: column; gap: 0;
+    position: fixed; top: 64px; left: 0; right: 0;
+    background: rgba(250,250,247,0.98);
+    backdrop-filter: blur(12px);
+    padding: 16px 5%;
+    border-bottom: 1px solid var(--border);
+    z-index: 99;
+  }
+  .mobile-menu a {
+    padding: 14px 0; font-size: 16px; color: var(--charcoal);
+    text-decoration: none; border-bottom: 1px solid var(--border);
+    font-weight: 500;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+  .hero-inner > * { animation: fadeUp 0.7s ease both; }
+  .hero-inner > *:nth-child(2) { animation-delay: 0.15s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-inner, .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero { padding: 100px 5% 60px; }
+    .hero-visual { display: none; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero-stats { grid-template-columns: repeat(3,1fr); }
+  }
+  @media (max-width: 600px) {
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Bismika</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#reviews" onclick="toggleMenu()">Reviews</a>
+  <a href="#contact" onclick="toggleMenu()">Get in touch</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span class="dot"></span> Available for new projects</div>
+      <h1>Google Ads that actually <em>drive results</em></h1>
+      <p class="hero-desc">
+        Hi, I'm Bismika — a certified Google Ads specialist with 3+ years of experience helping businesses grow through data-driven PPC campaigns, advanced conversion tracking, and smart optimization.
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Work with me →</a>
+        <a href="#services" class="btn-ghost">View services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">100+</div>
+          <div class="lbl">Projects delivered</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">3+</div>
+          <div class="lbl">Years experience</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">4.9★</div>
+          <div class="lbl">Client rating</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="comparison-card bad">
+        <h3>❌ General Marketers</h3>
+        <ul class="comp-list bad">
+          <li><span class="icon">✗</span> Only set up ads — no strategy</li>
+          <li><span class="icon">✗</span> Don't understand data analysis</li>
+          <li><span class="icon">✗</span> No proper optimization</li>
+          <li><span class="icon">✗</span> Don't track ROI</li>
+          <li><span class="icon">✗</span> Keep increasing client spend</li>
+        </ul>
+      </div>
+      <div class="comparison-card good">
+        <h3>✅ Bismika — Advanced Specialist</h3>
+        <ul class="comp-list good">
+          <li><span class="icon">✓</span> Makes data-driven decisions</li>
+          <li><span class="icon">✓</span> Understands & works with algorithms</li>
+          <li><span class="icon">✓</span> Smart, continuous optimization</li>
+          <li><span class="icon">✓</span> Delivers qualified leads & sales</li>
+          <li><span class="icon">✓</span> Full ROI tracking & reporting</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-bg" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-left">
+        <div class="about-avatar-wrap">BB</div>
+        <div class="about-name">Bismika Bithi</div>
+        <div class="about-role">Google Ads Expert &amp; Web Analytics Specialist</div>
+        <p class="about-bio">
+          I'm a professional Google Ads expert with 3+ years of hands-on experience. I help businesses grow through effective PPC, Google Search Ads, and Performance Max (Pmax) campaigns. My approach combines deep keyword research, competitor analysis, and conversion tracking with GA4 &amp; GTM to ensure every rupee of your ad budget works harder.
+        </p>
+        <p class="about-bio" style="margin-top:-10px">
+          Business growth and client satisfaction are my top priorities. I'm always focused on measurable results — not just clicks.
+        </p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/bristti.bristti" target="_blank" class="social-link" title="Facebook">f</a>
+          <a href="https://www.instagram.com/bismikabithi" target="_blank" class="social-link" title="Instagram">✦</a>
+          <a href="https://www.linkedin.com/in/bismika-bithi" target="_blank" class="social-link" title="LinkedIn">in</a>
+          <a href="mailto:bismikabithi8@gmail.com" class="social-link" title="Email">@</a>
+        </div>
+      </div>
+      <div class="about-right">
+        <div class="section-label">Certifications</div>
+        <div class="cert-list">
+          <div class="cert-item">
+            <span class="cert-icon">🏅</span>
+            <div>
+              <div class="cert-name">Google Ads Certification</div>
+              <div class="cert-from">Issued by Google</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <span class="cert-icon">📊</span>
+            <div>
+              <div class="cert-name">Google Analytics 4 Certification</div>
+              <div class="cert-from">Issued by Google</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <span class="cert-icon">🎓</span>
+            <div>
+              <div class="cert-name">Google Ads Certificate</div>
+              <div class="cert-from">Issued by Skilluper</div>
+            </div>
+          </div>
+        </div>
+        <div class="section-label" style="margin-top:28px">Core Skills</div>
+        <div class="skills-wrap" style="margin-top:12px">
+          <span class="skill-pill">Google Search Ads</span>
+          <span class="skill-pill">Performance Max</span>
+          <span class="skill-pill">Shopping Ads</span>
+          <span class="skill-pill">Display Ads</span>
+          <span class="skill-pill">GA4 &amp; GTM</span>
+          <span class="skill-pill">Conversion Tracking</span>
+          <span class="skill-pill">Facebook Pixel</span>
+          <span class="skill-pill">Keyword Research</span>
+          <span class="skill-pill">Competitor Analysis</span>
+          <span class="skill-pill">Server-Side Tracking</span>
+          <span class="skill-pill">eCommerce Tracking</span>
+          <span class="skill-pill">Ad Copywriting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY ME -->
+<section class="why-bg">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Why choose me</div>
+      <div class="section-title" style="color:#fff">Results-first, always.</div>
+      <div class="section-sub" style="color:var(--green-200)">96% of ads fail due to avoidable mistakes. I make sure yours don't.</div>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <div class="why-title">Data-Driven Strategy</div>
+        <div class="why-desc">Every decision I make is backed by real data — not guesswork. I audit, analyze, and act with precision.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <div class="why-title">Proper Tracking Setup</div>
+        <div class="why-desc">No conversion tracking = no accountability. I ensure every event, lead, and sale is measured correctly.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <div class="why-title">Smart Keyword Use</div>
+        <div class="why-desc">I eliminate wasted spend with thorough negative keyword research and intent-based targeting.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">04</div>
+        <div class="why-title">Transparent Reporting</div>
+        <div class="why-desc">You'll always know where your money is going. I provide clear, honest reports with actionable insights.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">My services</div>
+      <div class="section-title">What I offer</div>
+      <div class="section-sub">End-to-end Google Ads and analytics solutions tailored to your business goals.</div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🎯</div>
+        <div class="service-title">Google Ads Management</div>
+        <p class="service-desc">Complete PPC campaign setup and ongoing management designed to deliver qualified leads and real sales — not just traffic.</p>
+        <ul class="service-features">
+          <li>Full campaign setup &amp; structure</li>
+          <li>Keyword &amp; competitor research</li>
+          <li>Location-based targeting</li>
+          <li>High-converting ad copywriting</li>
+          <li>Ongoing optimization &amp; auditing</li>
+          <li>Transparent monthly reporting</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📈</div>
+        <div class="service-title">GA4 &amp; GTM Tracking</div>
+        <p class="service-desc">Accurate conversion tracking is the backbone of any successful campaign. I set up every event so you can make confident decisions.</p>
+        <ul class="service-features">
+          <li>Google Tag Manager setup</li>
+          <li>Google Analytics 4 configuration</li>
+          <li>Enhanced conversion tracking</li>
+          <li>Ecommerce event tracking</li>
+          <li>Server-side tracking</li>
+          <li>Form, button &amp; call tracking</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📡</div>
+        <div class="service-title">Facebook Pixel &amp; CAPI</div>
+        <p class="service-desc">Maximize ad effectiveness with server-side Facebook Pixel and Conversion API setup to capture every customer action.</p>
+        <ul class="service-features">
+          <li>Facebook Pixel installation</li>
+          <li>Conversion API (CAPI) setup</li>
+          <li>Domain verification</li>
+          <li>Event deduplication</li>
+          <li>Enhanced match quality</li>
+          <li>All standard &amp; custom events</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚡</div>
+        <div class="service-title">Performance Max (Pmax)</div>
+        <p class="service-desc">Unlock the full power of Google's AI with a properly structured Pmax campaign. I handle everything from audit to continuous optimization.</p>
+        <ul class="service-features">
+          <li>Complete account audit first</li>
+          <li>High-quality asset creation</li>
+          <li>Audience signal setup</li>
+          <li>Ongoing ROI optimization</li>
+          <li>Regular performance reporting</li>
+          <li>24/7 support &amp; monitoring</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-bg" id="reviews">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Client reviews</div>
+      <div class="section-title">What clients say</div>
+      <div class="section-sub">Real feedback from real businesses I've helped grow.</div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <span class="platform-badge">Fiverr</span>
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">"Bismika completely transformed our Google Ads. She knew exactly what to fix and why. Our cost per lead dropped significantly within the first month. Highly professional and responsive!"</p>
+        <div class="review-author">
+          <div class="review-av">MK</div>
+          <div>
+            <div class="review-name">Mohammed K.</div>
+            <div class="review-role">eCommerce Business Owner</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <span class="platform-badge">Fiverr</span>
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">"The GA4 and GTM setup Bismika did for us was flawless. We can finally see exactly where our conversions are coming from. I wish I had hired her sooner. Outstanding work!"</p>
+        <div class="review-author">
+          <div class="review-av">SL</div>
+          <div>
+            <div class="review-name">Sarah L.</div>
+            <div class="review-role">Digital Marketing Manager</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <span class="platform-badge">Fiverr</span>
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">"We were wasting so much money on irrelevant clicks before. Bismika audited our account, rebuilt the structure, and now our ROAS has more than doubled. Exceptional specialist!"</p>
+        <div class="review-author">
+          <div class="review-av">AJ</div>
+          <div>
+            <div class="review-name">Alex J.</div>
+            <div class="review-role">Law Firm Owner, US</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <span class="platform-badge">Fiverr</span>
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">"Bismika set up our Facebook Pixel and CAPI correctly for the first time ever. Our event match quality went from poor to excellent. Fast delivery, clear communication, great results."</p>
+        <div class="review-author">
+          <div class="review-av">RN</div>
+          <div>
+            <div class="review-name">Rashid N.</div>
+            <div class="review-role">Shopify Store Owner</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <span class="platform-badge">Fiverr</span>
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">"Professional, knowledgeable, and results-oriented. Bismika delivered a complete Pmax campaign that started generating leads within days. Will definitely hire again for ongoing work."</p>
+        <div class="review-author">
+          <div class="review-av">PC</div>
+          <div>
+            <div class="review-name">Priya C.</div>
+            <div class="review-role">Real Estate Agency</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-bg" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <div class="section-label">Get in touch</div>
+        <div class="section-title">Ready to grow<br>your business?</div>
+        <p>Whether you need a complete Google Ads setup, a campaign audit, or advanced conversion tracking — I'm here to help. Feel free to reach out any time.</p>
+        <div class="contact-methods">
+          <a href="mailto:bismikabithi8@gmail.com" class="contact-method">
+            <div class="cm-icon">✉️</div>
+            <div>
+              <div class="cm-label">Email</div>
+              <div class="cm-val">bismikabithi8@gmail.com</div>
+            </div>
+          </a>
+          <a href="https://www.facebook.com/bristti.bristti" target="_blank" class="contact-method">
+            <div class="cm-icon">💬</div>
+            <div>
+              <div class="cm-label">Facebook</div>
+              <div class="cm-val">Message me on Facebook</div>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/bismika-bithi" target="_blank" class="contact-method">
+            <div class="cm-icon">🔗</div>
+            <div>
+              <div class="cm-label">LinkedIn</div>
+              <div class="cm-val">linkedin.com/in/bismika-bithi</div>
+            </div>
+          </a>
+          <a href="https://www.instagram.com/bismikabithi" target="_blank" class="contact-method">
+            <div class="cm-icon">📸</div>
+            <div>
+              <div class="cm-label">Instagram</div>
+              <div class="cm-val">@bismikabithi</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-right">
+        <div class="contact-form-card">
+          <h3>Send a message</h3>
+          <p>Tell me about your project and I'll get back to you within 24 hours.</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your name</label>
+              <input type="text" id="fname" placeholder="John Smith">
+            </div>
+            <div class="form-group">
+              <label>Email address</label>
+              <input type="email" id="femail" placeholder="john@example.com">
+            </div>
+            <div class="form-group">
+              <label>Service needed</label>
+              <select id="fservice">
+                <option value="">Select a service…</option>
+                <option>Google Ads Management</option>
+                <option>GA4 &amp; GTM Tracking</option>
+                <option>Facebook Pixel &amp; CAPI</option>
+                <option>Performance Max (Pmax)</option>
+                <option>Campaign Audit</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea id="fmsg" placeholder="Tell me about your business and goals…"></textarea>
+            </div>
+            <button class="form-submit" onclick="handleSubmit()">Send message →</button>
+            <div class="form-alert" id="formAlert">✓ Thanks! I'll reply within 24 hours. Meanwhile, feel free to email me directly.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Bismika Bithi &nbsp;·&nbsp; Google Ads &amp; Analytics Specialist &nbsp;·&nbsp;
+    <a href="mailto:bismikabithi8@gmail.com">bismikabithi8@gmail.com</a>
+  </p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    var m = document.getElementById('mobileMenu');
+    m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
+  }
+
+  function handleSubmit() {
+    var name = document.getElementById('fname').value.trim();
+    var email = document.getElementById('femail').value.trim();
+    var msg = document.getElementById('fmsg').value.trim();
+    if (!name || !email || !msg) {
+      alert('Please fill in your name, email, and message.');
+      return;
+    }
+    var alert = document.getElementById('formAlert');
+    alert.style.display = 'block';
+    // Open email client with prefilled message
+    var subject = encodeURIComponent('Inquiry from ' + name);
+    var body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + msg);
+    window.location.href = 'mailto:bismikabithi8@gmail.com?subject=' + subject + '&body=' + body;
+  }
+
+  // Smooth scroll for all anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
